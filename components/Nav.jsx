@@ -57,7 +57,7 @@ const Nav = () => {
           </div>
         ) : (
           <>
-            {/* {providers &&
+            {providers &&
               Object.values(providers).map((provider) => (
                 <button
                   type="button"
@@ -69,7 +69,7 @@ const Nav = () => {
                 >
                   Sign in
                 </button>
-              ))} */}
+              ))}
           </>
         )}
       </div>
@@ -84,7 +84,7 @@ const Nav = () => {
               height={37}
               className="rounded-full"
               alt="profile"
-              onClick={() => setToggleDropdown(!toggleDropdown)}
+              onClick={() => setToggleDropdown(!toggleDropdown)} // (prev) = !prev >> ini base practice
             />
 
             {toggleDropdown && (
