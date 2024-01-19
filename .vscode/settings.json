@@ -1,0 +1,11 @@
+{
+    "editor.fontSize": 17,
+    "markdown.preview.doubleClickToSwitchToEditor": true,
+    "files.autoSave": "afterDelay",
+    "workbench.editor.enablePreview": false,
+    "prettier.tabWidth": 2,
+    "editor.minimap.maxColumn": 120,
+    "editor.wordWrapColumn": 100,
+    "editor.wordWrap": "off",
+    "terminal.integrated.fontSize": 15
+}

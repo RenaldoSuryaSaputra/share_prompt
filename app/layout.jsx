@@ -1,3 +1,4 @@
+// layout adalah entry point application dan membungkus semua komponen layaknya children
 import "@styles/globals.css";
 
 import Nav from "@components/Nav";
@@ -13,6 +14,7 @@ export const metadata = {
 const RootLayout = ({ children }) => (
   <html lang='en'>
     <body>
+      {/* provider untuk validasi auth */}
       <Provider>
         <div className='main'>
           <div className='gradient' />

@@ -1,4 +1,5 @@
 import { Schema, model, models } from 'mongoose';
+// models itu menyimpan semua model yang sudah diregisterasikan
 
 const UserSchema = new Schema({
   email: {
@@ -16,6 +17,7 @@ const UserSchema = new Schema({
   }
 });
 
+// cek apakah models User sudah tersedia, jika belum maka buat ulang
 const User = models.User || model("User", UserSchema);
 
 export default User;

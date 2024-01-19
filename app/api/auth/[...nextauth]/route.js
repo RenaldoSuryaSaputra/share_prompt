@@ -1,3 +1,4 @@
+// route : auth/.. > catch all segnent artinya bisa apa aja auth/a/b/c
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 
@@ -12,6 +13,7 @@ const handler = NextAuth({
     })
   ],
   callbacks: {
+    // untuk mendapatkan session login
     async session({ session }) {
       // store the user id from MongoDB to session
       const sessionUser = await User.findOne({ email: session.user.email });
@@ -19,6 +21,7 @@ const handler = NextAuth({
 
       return session;
     },
+    // untuk mendapatkan profile login
     async signIn({ account, profile, user, credentials }) {
       try {
         await connectToDB();
@@ -30,7 +33,7 @@ const handler = NextAuth({
         if (!userExists) {
           await User.create({
             email: profile.email,
-            username: profile.name.replace(" ", "").toLowerCase(),
+            username: profile.name.replace(/\s/g, "").toLowerCase(),
             image: profile.picture,
           });
         }
