@@ -41,8 +41,9 @@ const Feed = () => {
     // debounce method
     setSearchTimeout(
       setTimeout(() => {
-        const searchResult = filterPrompts(e.target.value);
-        setSearchedResults(searchResult);
+        // const searchResult = filterPrompts(e.target.value);
+        // setSearchedResults(searchResult);
+        setSearchedResults(e.target.value)
       }, 500)
     );
   };

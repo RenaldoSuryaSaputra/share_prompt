@@ -41,8 +41,8 @@ const CreatePrompt = () => {
     <>
       <Form
         type='Create'
-        post={post}
-        setPost={setPost}
+        post={post} // mengirim prop post dalam bentuk objek
+        setPost={setPost} // mengirim set state
         submitting={submitting}
         handleSubmit={createPrompt}
       />
