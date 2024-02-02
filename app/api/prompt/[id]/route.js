@@ -7,8 +7,8 @@ export const GET = async (request, { params }) => {
     // params id adalah dynamic params
     const prompt = await Prompt.findById(params.id).populate("creator");
     if (!prompt) {
-        return new Response("Prompt Not Found", { status: 404 });
-    } 
+      return new Response("Prompt Not Found", { status: 404 });
+    }
     return new Response(JSON.stringify(prompt), { status: 200 });
   } catch (error) {
     return new Response("Internal Server Error", { status: 500 });
@@ -42,10 +42,12 @@ export const DELETE = async (request, { params }) => {
     await connectToDB();
 
     // Find the prompt by ID and remove it
-    await Prompt.findByIdAndRemove(params.id);
+    console.log("DELETE");
+    await Prompt.findByIdAndDelete({ _id: params.id });
 
     return new Response("Prompt deleted successfully", { status: 200 });
   } catch (error) {
+    console.log(error);
     return new Response("Error deleting prompt", { status: 500 });
   }
 };
