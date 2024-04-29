@@ -17,7 +17,7 @@ const UserProfile = ({ params }) => {
       const data = await response.json();
       console.log(data)
 
-      setUserPosts(data);
+      setUserPosts(data.data);
     };
 
     if (params?.id) fetchPosts();
