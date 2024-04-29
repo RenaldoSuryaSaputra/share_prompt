@@ -1,4 +1,5 @@
-// halaman yang akan muncul pada entri point yang nantinya akan dibungkus pada layout childeren
+// halaman yang akan muncul pada entri point yang 
+// nantinya akan dibungkus pada layout childeren
 import Feed from "@components/Feed";
 
 const Home = () => (
