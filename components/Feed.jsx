@@ -33,6 +33,16 @@ const Feed = () => {
     fetchPosts();
   }, []);
 
+  const filterPrompts = (searchText) => {
+    const regex = new RegExp(searchText, "i"); // 'i' flag for case-insensitive search
+    return allPosts.filter(
+      (item) =>
+        regex.test(item.creator.username) ||
+        regex.test(item.tag) ||
+        regex.test(item.prompt)
+    );
+  }
+
   // fungsi handle search
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout);
@@ -41,11 +51,17 @@ const Feed = () => {
     // debounce method
     setSearchTimeout(
       setTimeout(() => {
-        // const searchResult = filterPrompts(e.target.value);
-        // setSearchedResults(searchResult);
-        setSearchedResults(e.target.value)
+        const searchResult = filterPrompts(e.target.value);
+        setSearchedResults(searchResult);
       }, 500)
     );
+  };
+
+  const handleTagClick = (tagName) => {
+    setSearchText(tagName);
+
+    const searchResult = filterPrompts(tagName);
+    setSearchedResults(searchResult);
   };
 
   return (
@@ -64,9 +80,9 @@ const Feed = () => {
 
       {/* prompt list  */}
       {searchText ? (
-        <PromptCardList data={searchedResults} handleTagClick={(() => {})}/>
+        <PromptCardList data={searchedResults} handleTagClick={handleTagClick}/>
       ) : (
-        <PromptCardList data={allPosts} handleTagClick={(() => {})} />
+        <PromptCardList data={allPosts} handleTagClick={handleTagClick} />
       )}
     </section>
   );

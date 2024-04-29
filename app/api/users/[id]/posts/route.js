@@ -7,7 +7,12 @@ export const GET = async (request, { params }) => {
     await connectToDB();
     // mendapatkan prompts berserta creator atau usernya "populate"
     const prompts = await Prompt.find({ creator: params.id }).populate("creator");
-    return new Response(JSON.stringify(prompts), { status: 200 });
+    const response = {
+      data : prompts,
+      message : "Berhasil mendapatkan data",
+      page : 1
+    }
+    return new Response(JSON.stringify(response), { status: 200 });
   } catch (error) {
     return new Response("Failed to fetch prompts created by user", { status: 500 });
   }
